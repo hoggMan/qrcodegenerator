@@ -1,0 +1,12 @@
+img {
+    margin: auto;
+}
+#qrcode {
+    display: none;
+}
+.card {
+    border-radius: 20px !important;
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}

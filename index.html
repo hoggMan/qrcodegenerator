@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center" style="margin-top: 10%">
+            <h1 style="font-weight: 700">QR Code Generator</h1>
+            <p style="padding-left: 10%; padding-right: 10%; margin-top: 10px">This is a free resource for generating QR
+                codes. Simply input a URL or text and click the button to generate a code. URLs will link to a site and
+                text will display contents.</p>
+        </div>
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-10" style="margin: auto;">
+                <div class="input-group mb-3">
+                    <input id="text" type="text" class="form-control" placeholder="Enter QR Code Details"
+                        aria-label="QR Code Details" aria-describedby="button-addon2">
+                    <button class="btn btn-success" type="button" id="button-addon2" onclick="makeCode()">Generate QR
+                        Code</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="text-align: center; margin-top: 5%">
+            <div id="qrcode"></div>
+        </div>
+        <div id="qrcode"></div>
+        <div id="download" style="text-align: center;"></div>
+        <div class="card shadow">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 style="font-weight: 700;">Legend</h2>
+                    <h4>Text: <span class="text-muted">Enter the text as is in the input field</span></h4>
+                    <h4>URL: <span class="text-muted">Enter the URL in the input field</span></h4>
+                    <h4>Geo: <span class="text-muted">Geo:[lat],[lng]</span></h4>
+                    <h4>WiFi: <span class="text-muted">WIFI:S:[SSID];T:[WPA|WEP|];P:[password];;</span></h4>
+                </div>
+                <div class="col-md-6">
+                    <img src="/img/19 (3).png" width="75%">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

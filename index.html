@@ -17,37 +17,43 @@
 
 <body>
     <div class="container">
-        <div class="row text-center" style="margin-top: 10%">
+        <div class="row text-center" style="margin-top: 5%">
             <h1 style="font-weight: 700">QR Code Generator</h1>
-            <p style="padding-left: 10%; padding-right: 10%; margin-top: 10px">This is a free resource for generating QR
-                codes. Simply input a URL or text and click the button to generate a code. For geo coordinates or WiFi login codes, copy and paste the schema found below and paste into the field. Repace the [] with your values.</p>
+            <p style="padding-left: 10%; padding-right: 10%; margin-top: 10px">Generate QR codes for different purposes:
+                Text, URL, WiFi details, or Geolocation.</p>
         </div>
         <div class="row" style="margin-top: 5%;">
-            <div class="col-10" style="margin: auto;">
-                <div class="input-group mb-3">
-                    <input id="text" type="text" class="form-control" placeholder="Enter details"
-                        aria-label="QR Code Details" aria-describedby="button-addon2" style="padding: 2%;">
-                    <button class="btn btn-success" type="button" id="button-addon2" onclick="makeCode()">Generate QR
-                        Code</button>
+            <div class="col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>QR Code Type</h4>
+                        <form>
+                            <select class="form-select mb-3" id="qrType" onchange="showInputFields()">
+                                <option value="text" selected>Text</option>
+                                <option value="url">URL</option>
+                                <option value="wifi">WiFi</option>
+                                <option value="geo">Geolocation</option>
+                            </select>
+                            <div id="inputFields">
+                                <!-- Input fields will be injected here based on selection -->
+                            </div>
+                            <button class="btn btn-success" type="button" id="button-addon2"
+                                onclick="makeCode()">Generate
+                                QR
+                                Code</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row" style="text-align: center; margin-top: 5%">
-            <div id="qrcode"></div>
-        </div>
-        <div id="qrcode"></div>
-        <div id="download" style="text-align: center;"></div>
-        <div class="card shadow">
-            <div class="row">
-                <div class="col-md-7">
-                    <h2 style="font-weight: 700;">Types of QR Codes</h2><br>
-                    <h4>Text: <span class="text-muted">Enter the text in the input field</span></h4>
-                    <h4>URL: <span class="text-muted">Enter the URL in the input field</span></h4>
-                    <h4>Geo: <span class="text-muted">Geo:[lat],[lng]</span></h4>
-                    <h4>WiFi: <span class="text-muted">WIFI:S:[SSID];T:[WPA|WEP|];P:[password];;</span></h4>
-                </div>
-                <div class="col-md-5 text-center">
-                    <img src="assets/img/19 (3).png" width="75%">
+            <div class="col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>QR Code</h4>
+                        <div style="text-align: center;">
+                            <div id="qrcode"></div>
+                            <div id="download" style="text-align: center;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

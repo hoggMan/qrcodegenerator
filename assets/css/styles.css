@@ -5,8 +5,17 @@ img {
     display: none;
 }
 .card {
-    border-radius: 6px !important;
-    padding: 5%;
-    margin-top: 5%;
-    margin-bottom: 10%;
+    border-radius: 10px !important;
+    margin-bottom: 5% !important;
+}
+.card-body {
+    padding: 50px !important;
+}
+input {
+    padding: 10px !important;
+    border-radius: 25px !important;
+}
+select {
+    padding: 10px !important;
+    border-radius: 25px !important;
 }

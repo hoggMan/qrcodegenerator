@@ -36,9 +36,25 @@ function showInputFields() {
     inputFields.innerHTML = `<input type="text" id="text" class="form-control mb-3" placeholder="${placeholder}">`;
 }
 
-const qrcode = new QRCode("qrcode", { width: 200, height: 200 });
+const qrCode = new QRCodeStyling({
+    width: 300,
+    height: 300,
+    image: "",
+    dotsOptions: {
+        color: "#000000",
+        type: "rounded"
+    },
+    backgroundOptions: {
+        color: "#ffffff",
+    },
+    imageOptions: {
+        crossOrigin: "anonymous",
+        margin: 10
+    }
+});
+qrCode.append(document.getElementById("qrcode"));
 
-function makeCode() {
+function updateQRCode() {
     const qrType = document.getElementById('qrType').value;
     let val = '';
 
@@ -65,15 +81,47 @@ function makeCode() {
         return;
     }
 
-    qrcode.makeCode(val);
+    qrCode.update({
+        data: val,
+        dotsOptions: { color: document.getElementById('qrColor').value },
+        backgroundOptions: { color: document.getElementById('bgColor').value }
+    });
+
+    const qrLogo = document.getElementById('qrLogo').files[0];
+    if (qrLogo) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            qrCode.update({
+                image: e.target.result
+            });
+        };
+        reader.readAsDataURL(qrLogo);
+    }
+
     document.getElementById('qrcode').style.display = "block";
     downloadQR();
 }
 
+function resetQRCode() {
+    document.getElementById('qrcode').style.display = "none";
+    document.getElementById('download').innerHTML = '';
+    document.getElementById('qrColor').value = '#000000';
+    document.getElementById('bgColor').value = '#ffffff';
+    
+    qrCode.update({
+        data: "",
+        dotsOptions: { color: "#000000" },
+        backgroundOptions: { color: "#ffffff" },
+        image: ""
+    });
+}
+
 function downloadQR() {
     setTimeout(() => {
-        const image = document.querySelector("#qrcode img");
-        const source = image ? image.getAttribute("src") : '';
-        document.querySelector('#download').innerHTML = source ? `<a class="btn btn-primary" href="${source}" download="qrcode.png" style="margin-top: 2%;">Download QR Code</a>` : '';
+        const canvas = document.querySelector("#qrcode canvas");
+        const url = canvas.toDataURL("image/png");
+        document.querySelector('#download').innerHTML = `<a class="btn btn-success" href="${url}" download="qrcode.png" style="margin-top: 50px;">Download QR Code</a>`;
     }, 500);
 }
+
+window.makeCode = updateQRCode; // Make it globally available for the HTML to access

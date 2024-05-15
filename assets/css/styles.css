@@ -19,3 +19,44 @@ select {
     padding: 10px !important;
     border-radius: 25px !important;
 }
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    appearance: none;
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height to make it square */
+    border-radius: 50%; /* Make it round */
+    cursor: pointer; /* Cursor appears as a pointer to indicate this is clickable */
+    padding: 0; /* Remove padding */
+    background: none; /* Remove any default background */
+}
+
+/* Specific styles for WebKit/Blink browsers to remove the color well */
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    width: 28px; /* Adjust width if necessary */
+    height: 28px; /* Adjust height if necessary */
+}
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 50%; /* Ensure the inner swatch is also round */
+}
+
+/* Firefox might need additional adjustments */
+input[type="color"]::-moz-color-swatch {
+    border-radius: 50%; /* Ensure the swatch is round */
+}
+input[type="file"] {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+.custom-file-upload {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
